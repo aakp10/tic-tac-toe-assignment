@@ -1,11 +1,11 @@
 def winCheck(board):
     for i in range(3):
         if len(set(board[i*3:i*3+3])) is  1 and board[i*3] is not 'c': return True
-    ### check if any of the Columns has winning combination
+    
     for i in range(3):
        if (board[i] is board[i+3]) and (board[i] is  board[i+6]) and board[i] is not 'c':
            return True
-    ### 2,4,6 and 0,4,8 cases
+    
     if board[0] is board[4] and board[4] is board[8] and board[4] is not 'c':
         return  True
     if board[2] is board[4] and board[4] is board[6] and board[4] is not 'c':
