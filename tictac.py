@@ -1,3 +1,30 @@
+def generateBoard(board,index,fboard):
+	if index!=9 :
+		for i in range(3):
+			if i==0 :
+				board[index]='x'
+				fboard.write(str(board))
+				fboard.write("\n")
+				indexa=index
+				indexa=indexa+1
+				generateBoard(board,indexa,fboard)				
+			elif i==1 :
+				board[index]='o'
+				fboard.write(str(board))
+				fboard.write("\n")
+				indexb=index
+				indexb=indexb+1
+				generateBoard(board,indexb,fboard)
+			else :
+				board[index]='c'
+				fboard.write(str(board))
+				fboard.write("\n")
+				indexc=index
+				indexc=indexc+1
+				generateBoard(board,indexc,fboard)
+	else :
+		return 0
+	
 def winCheck(board):
     for i in range(3):
         if len(set(board[i*3:i*3+3])) is  1 and board[i*3] is not 'c': return True
@@ -44,7 +71,7 @@ def nextMove(player,board) :
 	elif player is "o" :
 			minele=min(list_scores)
 			return minele,list_empty_spaces[list_scores.index(minele)]
-
+"""
 f2 =open("./output.txt","w+")
 f= open("./boards.txt","r")
 for line in f:
@@ -56,3 +83,8 @@ for line in f:
 	f2.write(str(move)+'\n')
 f2.close()
 f.close()
+"""
+board=list("ccccccccc")
+fboard = open("./allBoards.txt","w+")
+generateBoard(board,0,fboard)
+fboard.close()
